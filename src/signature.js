@@ -72,7 +72,7 @@ function buildSignatureHtml(user) {
     // Build Chairman's Club badge cell
     let ccBadgeCell = "";
     if (isCc) {
-        ccBadgeCell = `<td style="padding-left:24px;padding-right:2px;">
+        ccBadgeCell = `<td style="padding-left:16px;padding-right:2px;">
             <img src="${CC_BADGE_URL}" 
                  alt="Chairman's Club" 
                  title="Chairman's Club" 
