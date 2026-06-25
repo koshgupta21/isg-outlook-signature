@@ -120,7 +120,9 @@ function buildSignatureHtml(user) {
         ${mobileRow}
         <tr>
             <td colspan="3" style="padding-top:8px;">
-                <img src="${ISG_LOGO_URL}" alt="ISG" width="120" height="40"/>
+                <a href="https://www.isg-one.com" target="_blank" rel="noopener">
+                    <img src="${ISG_LOGO_URL}" alt="ISG" width="150" height="50"/>
+                </a>
             </td>
         </tr>
     </table>`;
