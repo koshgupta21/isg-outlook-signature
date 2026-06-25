@@ -1,7 +1,7 @@
 ﻿// CDN URLs for images - UPDATE THESE with your actual CDN
 const CDN_BASE = "https://cdn.isg-one.com/Email%20Images";
 const CC_BADGE_URL = `${CDN_BASE}/ISG_image017.png`;
-const ISG_LOGO_URL = `${CDN_BASE}/ISG_logo.png`;
+const ISG_LOGO_URL = `${CDN_BASE}/ISG_image005_Trans.png`;
 
 // Entry point - fires when user creates new email
 function onNewMessageCompose(event) {
