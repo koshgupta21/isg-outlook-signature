@@ -4,7 +4,6 @@
            xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
            xsi:type="MailApp">
 
-  <!-- Get a real GUID from: https://www.guidgenerator.com -->
   <Id>6d8f4b2e-3a1c-4d9e-8f7b-2c5a1d3e6f8b</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>ISG</ProviderName>
@@ -12,7 +11,6 @@
   <DisplayName DefaultValue="ISG Outlook Signature"/>
   <Description DefaultValue="Automatically applies ISG email signature"/>
 
-  <!-- Using Microsoft's own public CDN icons — no local icons needed -->
   <IconUrl DefaultValue="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/brand-icons/product/svg/outlook_32x1.svg"/>
   <HighResolutionIconUrl DefaultValue="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/brand-icons/product/svg/outlook_64x1.svg"/>
   <SupportUrl DefaultValue="https://www.isg-one.com"/>
@@ -20,6 +18,7 @@
   <AppDomains>
     <AppDomain>https://graph.microsoft.com</AppDomain>
     <AppDomain>https://login.microsoftonline.com</AppDomain>
+    <AppDomain>https://koshgupta21.github.io</AppDomain>
   </AppDomains>
 
   <Hosts>
@@ -35,7 +34,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://YOUR-HTTPS-URL/commands.html"/>
+        <SourceLocation DefaultValue="https://koshgupta21.github.io/isg-outlook-signature/commands.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -47,7 +46,6 @@
     <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
   </Rule>
 
-  <!-- VersionOverrides V1_0 must wrap V1_1 -->
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides"
                     xsi:type="VersionOverridesV1_0">
     <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1"
@@ -63,7 +61,6 @@
         <Host xsi:type="MailHost">
           <DesktopFormFactor>
 
-            <!-- FunctionFile is required -->
             <FunctionFile resid="Commands.Url"/>
 
             <ExtensionPoint xsi:type="LaunchEvent">
@@ -81,12 +78,15 @@
       <Resources>
         <bt:Urls>
           <bt:Url id="Commands.Url"
-                  DefaultValue="https://YOUR-HTTPS-URL/commands.html"/>
+                  DefaultValue="https://koshgupta21.github.io/isg-outlook-signature/commands.html"/>
         </bt:Urls>
         <bt:Images>
-          <bt:Image id="icon-16" DefaultValue="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/brand-icons/product/svg/outlook_16x1.svg"/>
-          <bt:Image id="icon-32" DefaultValue="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/brand-icons/product/svg/outlook_32x1.svg"/>
-          <bt:Image id="icon-80" DefaultValue="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/brand-icons/product/svg/outlook_80x1.svg"/>
+          <bt:Image id="icon-16"
+                    DefaultValue="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/brand-icons/product/svg/outlook_16x1.svg"/>
+          <bt:Image id="icon-32"
+                    DefaultValue="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/brand-icons/product/svg/outlook_32x1.svg"/>
+          <bt:Image id="icon-80"
+                    DefaultValue="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/brand-icons/product/svg/outlook_80x1.svg"/>
         </bt:Images>
         <bt:ShortStrings>
           <bt:String id="AddInName" DefaultValue="ISG Outlook Signature"/>
