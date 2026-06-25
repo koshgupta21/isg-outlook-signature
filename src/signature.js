@@ -44,10 +44,15 @@ function buildSignatureHtml(user) {
     const designation = getDesignation(user.comments);
     const badgeUrl = getDesignationBadgeUrl(designation);
     const isCc = isChairmansClub(user.comments);
+    const country = getCountry(user.comments);
+    const busUnit = getBusUnit(user.comments);
 
     console.log("Designation:", designation);
     console.log("Badge URL:", badgeUrl);
     console.log("Chairman's Club:", isCc);
+    console.log("Country:", country);
+    console.log("Bus Unit:", busUnit);
+
 
     // Build badge cell
     let badgeCell = "";
@@ -103,6 +108,33 @@ function buildSignatureHtml(user) {
         </td></tr>`;
     }
 
+    // Country-specific legal footer (Germany / Switzerland)
+    const countryFooter = getCountryFooterHtml(country);
+
+    // General ISG description shown to all users
+    const isgDescription = `
+        <p style="margin:4px 0;">
+            <span style="font-size:10pt;color:#767171;">
+                <b>Information Services Group</b>
+            </span>
+            <span style="font-size:10pt;color:#767171;">
+                &nbsp;is a global AI-centered technology research and advisory firm.
+            </span>
+        </p>`;
+
+    // General confidentiality note shown to all users
+    const confidentialityNote = `
+        <p style="margin:4px 0;">
+            <span style="font-size:8pt;color:#767171;">
+                Confidentiality note: The above email contains information that is 
+                confidential and/or privileged. The information is for the use of the 
+                individual or entity originally intended. If you are not the intended 
+                recipient, please contact the sender and delete the material from any 
+                computer. Please be aware that any disclosure, copying, distribution 
+                or use of this information is prohibited.
+            </span>
+        </p>`;
+
     // Build complete signature HTML
     const html = `
     <table cellpadding="0" cellspacing="0" border="0" style="font-family:Calibri,Arial,sans-serif;">
@@ -123,6 +155,21 @@ function buildSignatureHtml(user) {
                 <a href="https://www.isg-one.com" target="_blank" rel="noopener">
                     <img src="${ISG_LOGO_URL}" alt="ISG" width="150" height="50"/>
                 </a>
+            </td>
+        </tr>
+        <!-- Country-specific legal footer (Germany / Switzerland only) -->
+        ${countryFooter ? `
+        <tr>
+            <td colspan="3">
+                ${countryFooter}
+            </td>
+        </tr>` : ""}
+
+        <!-- ISG description + confidentiality note (all users) -->
+        <tr>
+            <td colspan="3">
+                ${isgDescription}
+                ${confidentialityNote}
             </td>
         </tr>
     </table>`;
