@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xsi:type="MailApp">
+
+  <!-- Get a real GUID from: https://www.guidgenerator.com -->
+  <Id>6d8f4b2e-3a1c-4d9e-8f7b-2c5a1d3e6f8b</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>ISG</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="ISG Outlook Signature"/>
+  <Description DefaultValue="Automatically applies ISG email signature"/>
+
+  <!-- Using Microsoft's own public CDN icons — no local icons needed -->
+  <IconUrl DefaultValue="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/brand-icons/product/svg/outlook_32x1.svg"/>
+  <HighResolutionIconUrl DefaultValue="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/brand-icons/product/svg/outlook_64x1.svg"/>
+  <SupportUrl DefaultValue="https://www.isg-one.com"/>
+
+  <AppDomains>
+    <AppDomain>https://graph.microsoft.com</AppDomain>
+    <AppDomain>https://login.microsoftonline.com</AppDomain>
+  </AppDomains>
+
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.13"/>
+    </Sets>
+  </Requirements>
+
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://YOUR-HTTPS-URL/commands.html"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+
+  <Permissions>ReadWriteItem</Permissions>
+
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+  </Rule>
+
+  <!-- VersionOverrides V1_0 must wrap V1_1 -->
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides"
+                    xsi:type="VersionOverridesV1_0">
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1"
+                      xsi:type="VersionOverridesV1_1">
+
+      <Requirements>
+        <bt:Sets>
+          <bt:Set Name="Mailbox" MinVersion="1.13"/>
+        </bt:Sets>
+      </Requirements>
+
+      <Hosts>
+        <Host xsi:type="MailHost">
+          <DesktopFormFactor>
+
+            <!-- FunctionFile is required -->
+            <FunctionFile resid="Commands.Url"/>
+
+            <ExtensionPoint xsi:type="LaunchEvent">
+              <LaunchEvents>
+                <LaunchEvent Type="OnNewMessageCompose"
+                             FunctionName="onNewMessageCompose"/>
+              </LaunchEvents>
+              <SourceLocation resid="Commands.Url"/>
+            </ExtensionPoint>
+
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+
+      <Resources>
+        <bt:Urls>
+          <bt:Url id="Commands.Url"
+                  DefaultValue="https://YOUR-HTTPS-URL/commands.html"/>
+        </bt:Urls>
+        <bt:Images>
+          <bt:Image id="icon-16" DefaultValue="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/brand-icons/product/svg/outlook_16x1.svg"/>
+          <bt:Image id="icon-32" DefaultValue="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/brand-icons/product/svg/outlook_32x1.svg"/>
+          <bt:Image id="icon-80" DefaultValue="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/brand-icons/product/svg/outlook_80x1.svg"/>
+        </bt:Images>
+        <bt:ShortStrings>
+          <bt:String id="AddInName" DefaultValue="ISG Outlook Signature"/>
+        </bt:ShortStrings>
+        <bt:LongStrings>
+          <bt:String id="AddInDescription"
+                     DefaultValue="Automatically applies ISG email signature"/>
+        </bt:LongStrings>
+      </Resources>
+
+    </VersionOverrides>
+  </VersionOverrides>
+
+</OfficeApp>
