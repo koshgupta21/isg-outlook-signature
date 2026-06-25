@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Signature Test</title>
+    <script src="src/designation.js"></script>
+    <script src="src/signature.js"></script>
+</head>
+<body>
+    <h2>Signature Preview</h2>
+    <div id="preview" style="border:1px solid #ccc; padding:20px; margin:20px;"></div>
+
+    <script>
+        // Test different user scenarios
+        const testUsers = [
+            {
+                displayName:  "Kosh Gupta",
+                jobTitle:     "Senior Consultant",
+                businessPhone: "+44 1234 567890",
+                mobilePhone:  "+44 7890 123456",
+                comments:     "26adv"    // Advanced badge
+            },
+            {
+                displayName:  "John Smith",
+                jobTitle:     "Director",
+                businessPhone: "+44 1234 567890",
+                mobilePhone:  "+44 7890 123456",
+                comments:     "26cyb"    // Expert badge
+            },
+            {
+                displayName:  "Jane Doe",
+                jobTitle:     "Principal",
+                businessPhone: "+44 1234 567890",
+                mobilePhone:  "+44 7890 123456",
+                comments:     "26fel"    // Fellow badge
+            },
+            {
+                displayName:  "Bob Wilson",
+                jobTitle:     "Manager",
+                businessPhone: "+44 1234 567890",
+                mobilePhone:  "+44 7890 123456",
+                comments:     "cc;26adv" // Chairman's Club + Advanced
+            }
+        ];
+
+        // Show all test signatures
+        testUsers.forEach(user => {
+            const html = buildSignatureHtml(user);
+            const div = document.createElement("div");
+            div.style.borderBottom = "1px solid #eee";
+            div.style.padding = "20px";
+            div.innerHTML = `
+                <p style="color:#999;font-size:12px;">
+                    Comments: "${user.comments}"
+                </p>
+                ${html}
+            `;
+            document.getElementById("preview").appendChild(div);
+        });
+    </script>
+</body>
+</html>
