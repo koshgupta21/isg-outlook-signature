@@ -4,7 +4,7 @@
 
 const CDN_BASE = "https://your-cdn.isg-one.com/signatures";
 const CC_BADGE_URL = `${CDN_BASE}/ISG_image017.png`;
-const ISG_LOGO_URL = `${CDN_BASE}/ISG_logo.png`;
+const ISG_LOGO_URL = `${CDN_BASE}/ISG_image005_Trans.png`;
 
 // ─────────────────────────────────────────────
 // ENTRY POINT
@@ -64,7 +64,7 @@ function buildSignatureHtml(user) {
     let badgeCell = "";
     if (badgeUrl) {
         badgeCell = `
-            <td style="padding-left:8px;vertical-align:middle;">
+            <td style="padding-left:4px;">
                 <img src="${badgeUrl}"
                      alt="${designation}"
                      title="${designation}"
@@ -72,7 +72,7 @@ function buildSignatureHtml(user) {
             </td>`;
     } else if (designation) {
         badgeCell = `
-            <td style="padding-left:8px;vertical-align:middle;">
+            <td style="td style="padding-left:4px;">
                 <span style="font-size:10pt;color:#767171;
                              font-family:Calibri,Arial,sans-serif;">
                     <b>${designation}</b>
@@ -82,7 +82,7 @@ function buildSignatureHtml(user) {
 
     // ── Chairman's Club cell ─────────────────
     const ccCell = isCc ? `
-        <td style="padding-left:8px;vertical-align:middle;">
+        <td style="padding-left:16px;padding-right:2px;">
             <img src="${CC_BADGE_URL}"
                  alt="Chairman's Club"
                  title="Chairman's Club"
@@ -191,8 +191,10 @@ function buildSignatureHtml(user) {
 
         <!-- Row 5: ISG Logo -->
         <tr>
-            <td colspan="3" style="padding-top:8px;padding-bottom:8px;">
-                <img src="${ISG_LOGO_URL}" alt="ISG" width="120" height="40"/>
+            <td colspan="3" style="padding-top:8px;">
+                <a href="https://www.isg-one.com" target="_blank" rel="noopener">
+                    <img src="${ISG_LOGO_URL}" alt="ISG" width="150" height="50"/>
+                </a>
             </td>
         </tr>
 
