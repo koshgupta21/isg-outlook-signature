@@ -53,7 +53,7 @@ function buildSignatureHtml(user) {
     let badgeCell = "";
     if (badgeUrl) {
         // 2026 badge - use image from CDN
-        badgeCell = `<td style="padding-left:8px;">
+        badgeCell = `<td style="padding-left:4px;">
             <img src="${badgeUrl}" 
                  alt="${designation}" 
                  title="${designation}" 
@@ -62,7 +62,7 @@ function buildSignatureHtml(user) {
         </td>`;
     } else if (designation) {
         // Non-2026 designation - show as text
-        badgeCell = `<td style="padding-left:8px;">
+        badgeCell = `<td style="padding-left:4px;">
             <span style="font-size:10pt;color:#767171;">
                 <b>${designation}</b>
             </span>
@@ -72,7 +72,7 @@ function buildSignatureHtml(user) {
     // Build Chairman's Club badge cell
     let ccBadgeCell = "";
     if (isCc) {
-        ccBadgeCell = `<td style="padding-right:8px;">
+        ccBadgeCell = `<td style="padding-left:24px;padding-right:2px;">
             <img src="${CC_BADGE_URL}" 
                  alt="Chairman's Club" 
                  title="Chairman's Club" 
@@ -107,7 +107,7 @@ function buildSignatureHtml(user) {
     const html = `
     <table cellpadding="0" cellspacing="0" border="0" style="font-family:Calibri,Arial,sans-serif;">
         <tr>
-            <td style="padding-bottom:4px;">
+            <td style="padding-bottom:8px;">
                 <span style="font-size:12pt;font-weight:bold;color:#1F3864;">
                     ${user.displayName}
                 </span>
