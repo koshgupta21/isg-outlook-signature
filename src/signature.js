@@ -61,33 +61,30 @@ function buildSignatureHtml(user) {
     console.log("busUnit     :", busUnit);
 
     // ── Badge cell ──────────────────────────
-    let badgeCell = "";
+    let badgeHtml = "";
     if (badgeUrl) {
-        badgeCell = `
-            <td style="padding-left:4px;">
-                <img src="${badgeUrl}"
-                     alt="${designation}"
-                     title="${designation}"
-                     width="115" height="17"/>
-            </td>`;
+        badgeHtml = `
+            <img src="${badgeUrl}"
+                 alt="${designation}"
+                 title="${designation}"
+                 width="115" height="17"
+                 style="vertical-align:middle;margin-left:8px;"/>`;
     } else if (designation) {
-        badgeCell = `
-            <td style="td style="padding-left:4px;">
-                <span style="font-size:10pt;color:#767171;
-                             font-family:Calibri,Arial,sans-serif;">
-                    <b>${designation}</b>
-                </span>
-            </td>`;
+        badgeHtml = `
+            <span style="font-size:10pt;color:#767171;
+                         font-family:Calibri,Arial,sans-serif;
+                         vertical-align:middle;margin-left:8px;">
+                <b>${designation}</b>
+            </span>`;
     }
 
-    // ── Chairman's Club cell ─────────────────
-    const ccCell = isCc ? `
-        <td style="padding-left:16px;padding-right:2px;">
-            <img src="${CC_BADGE_URL}"
-                 alt="Chairman's Club"
-                 title="Chairman's Club"
-                 width="29" height="21"/>
-        </td>` : "";
+    // ── Chairman's Club HTML (inline, not separate <td>) ──
+    const ccHtml = isCc ? `
+        <img src="${CC_BADGE_URL}"
+             alt="Chairman's Club"
+             title="Chairman's Club"
+             width="29" height="21"
+             style="vertical-align:middle;margin-left:8px;"/>` : "";
 
     // ── Optional rows ────────────────────────
     const titleRow = user.jobTitle ? `
@@ -168,16 +165,15 @@ function buildSignatureHtml(user) {
     <table cellpadding="0" cellspacing="0" border="0"
            style="font-family:Calibri,Arial,sans-serif;">
 
-        <!-- Row 1: Name + Chairman's Club + Badge -->
+        <!-- Row 1: Name + Chairman's Club + Badge — all in ONE cell -->
         <tr>
-            <td style="vertical-align:middle;padding-bottom:4px;">
+            <td colspan="3" style="padding-bottom:4px;">
                 <span style="font-size:12pt;font-weight:bold;color:#1F3864;
-                             font-family:Calibri,Arial,sans-serif;">
+                             font-family:Calibri,Arial,sans-serif;
+                             vertical-align:middle;">
                     ${user.displayName}
-                </span>
+                </span>${ccHtml}${badgeHtml}
             </td>
-            ${ccCell}
-            ${badgeCell}
         </tr>
 
         <!-- Row 2: Job title -->
